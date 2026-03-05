@@ -6,9 +6,9 @@ services:
     ports:
       - "${PORT:-8124}:${PORT:-8124}"
     volumes:
-      - ./uhf-recordings:/recordings
-      - ./uhf-db:/var/lib/uhf-server
+      - ${RECORDINGS_DIR:-./recordings}:/recordings
+      - ${DB_DIR:-./uhf-db}:/var/lib/uhf-server
     environment:
-      - PORT=${PORT:-8000}
-      - PASSWORD=${PASSWORD:-} # Optional password protection
+      - PORT=${PORT:-8124}
+      - PASSWORD=${PASSWORD:-}
     command: uhf-server --port ${PORT:-8124} --recordings-dir /recordings ${PASSWORD:+--password ${PASSWORD}} --enable-commercial-detection
