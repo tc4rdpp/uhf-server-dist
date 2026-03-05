@@ -6,8 +6,8 @@ services:
     ports:
       - "${PORT:-8124}:${PORT:-8124}"
     volumes:
-      - ${RECORDINGS_DIR:-./recordings}:/recordings
-      - ${DB_DIR:-./uhf-db}:/var/lib/uhf-server
+      - ${DATA_DIR:-/opt/uhf-server}/recordings:/recordings
+      - ${DATA_DIR:-/opt/uhf-server}/db:/var/lib/uhf-server
     environment:
       - PORT=${PORT:-8124}
       - PASSWORD=${PASSWORD:-}
